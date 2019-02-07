@@ -1,0 +1,34 @@
+[外部参照スクリプトの設定]
+
+1.コントロールパネルから環境変数を開く
+
+2.ユーザー環境変数の中に「Path」があるので編集
+
+3.読み込んでほしいフォルダを参照(C:\…に必ずする)を押してOKの連続
+
+4.…(省略)\Documents\maya\scriptsの中に
+・__init__.py(_×2)
+・userSetup.py
+の2つ.pyファイルを追加
+
+5.下記のコマンドをuserSetup.pyに追加
+
+例
+from maya import utils
+import sys
+
+sys.path.append( 'P:/Users/Documents’(参照したフォルダ) )
+
+6.参照フォルダの中に.pyファイルを作成して自由に書き込む
+※書き込むときは def main(): 内で実行できるようにする
+
+[スクリプト実行方法]
+MayaのScriptEditorに下記のコマンドを書き込む
+
+例
+from scripts.testScripts(フォルダ名#参照したフォルダ内なら書かなくてよい) import testScripts(Python名)
+
+pythonScript = testScripts(Python名)
+
+reload(pythonScript)
+pythonScript.main()
